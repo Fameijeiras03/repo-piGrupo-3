@@ -6,9 +6,17 @@ let lenAutos = autos.length
 const userController = {
     profile : function (req,res) {
         let user = usuario
-        let userProducts = autos
-        return res.render('profile', {'user': user, userProducts})
-    }
-}
+        return res.render('profile', {'user': user})
+    },
+    listProducts : function(req,res) {
+        let products = []
+        for (let i = 0; i < lenAutos; i++) {
+            products.push(autos[i].comentarios[0].texto)
+            }
+        return res.render('profile',{'products': products})
+        }
+        }
+        
+
 
 module.exports = userController
