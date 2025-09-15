@@ -1,7 +1,7 @@
 const autos = {
   usuario: {
     email: "eferrari@maranello.com.it",
-    usuario: "Enzo Ferrari",
+    nombre: "Enzo Ferrari",
     contraseña: "Fangio1951",
     fechaNacimiento: "1898-2-18", 
     nroDocumento: 12345678,
