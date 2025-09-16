@@ -32,15 +32,24 @@ const userController = {
         })
         },
 
-  
+
     register: function (req, res) {
         const nuevoUsuario = {
-         email: '',
+        email: '',
         usuario: '',
         contrasena: '',
         foto_de_perfil: ''
         };
     return res.render('register', { user: nuevoUsuario });
+    },
+
+    login: function(req, res){
+        const loginUsuario={
+            email: "",
+            contrasena: "",
+            
+        };
+        return res.render('login', {user:loginUsuario});
     }
     
 }
