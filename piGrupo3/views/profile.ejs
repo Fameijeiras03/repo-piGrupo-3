@@ -16,33 +16,27 @@
 	<h2>
 		<%= user.email %>
 	</h2>
-	<h3>
-		Productos
-	</h3>
-	
-
-
-
-
+	<h3>Productos</h3>
 	<ul>
 		<% for (let i = 0; i < listProducts.length; i++) { %>
 			<li>
-        <img src="<%= listProducts[i].imagen %>" alt="Foto del Producto" width="100">
-
-        <ul>
-			<li><strong>Nombre:</strong> <%= listProducts[i].nombre %></li>
-			<li><strong>Descripción:</strong> <%= listProducts[i].descripcion %></li>
+				<img src='<%= listProducts[i].imagen %>' alt="" width="100">
+			</li>
 			<li>
-				<strong>Cant. comentarios:</strong> 
+				<%= listProducts[i].nombre %>
+			</li>
+			<li>
+				<%= listProducts[i].descripcion %>
+			</li>
+			<li>
+				Cant. comentarios:
 					<% if (coments[i]) { %>
 						<%= coments[i].length %>
 					<% } else { %>
 						0
 					<% } %>
 			</li>
-			</ul>
-				</li>
-			<% } %>
+		<% } %>
 	</ul>
 
 
