@@ -4,5 +4,6 @@ var router = express.Router();
 const uC = require('../controllers/userController')
 
 router.get('/profile', uC.profile);
+router.get('/register', uC.register);
 
 module.exports = router;
