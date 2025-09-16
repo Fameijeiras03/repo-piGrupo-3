@@ -17,7 +17,9 @@ const productController = {
         }
         return res.render('index',{productsList: productsList,  coments: coments})
     },
-
+    productAdd: function(req,res){
+        return res.render('productAdd');
+    }
 
 
 
