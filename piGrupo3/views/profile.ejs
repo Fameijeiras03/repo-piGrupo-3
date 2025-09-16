@@ -6,16 +6,53 @@
 	<title>Document</title>
 </head>
 <body>
-	<img src="/images/enzoFerrari.jpg" alt="">
+	<img src= <%= user.fotoDePerfil %> alt="Foto del Auto">
 	<h1>
 		<%= user.nombre %>
 	</h1>
 	<h2>
 		<%= user.email %>
 	</h2>
-	<p>
-		<%= products %>
-	</p>
+	<h3>
+		Productos
+	</h3>
 	
+
+
+
+
+	<ul>
+		<% for (let i = 0; i < listProducts.length; i++) { %>
+			<li>
+        <img src="<%= listProducts[i].imagen %>" alt="Foto del Producto" width="100">
+
+        <ul>
+			<li><strong>Nombre:</strong> <%= listProducts[i].nombre %></li>
+			<li><strong>Descripción:</strong> <%= listProducts[i].descripcion %></li>
+			<li>
+				<strong>Cant. comentarios:</strong> 
+					<% if (coments[i]) { %>
+						<%= coments[i].length %>
+					<% } else { %>
+						0
+					<% } %>
+			</li>
+			</ul>
+				</li>
+			<% } %>
+	</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>
