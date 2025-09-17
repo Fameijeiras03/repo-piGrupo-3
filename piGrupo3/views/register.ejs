@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 <body>
     <%- include('partials/header.ejs') %>
     <h1>Registro</h1>
 <form action="/users/register" method="POST">
-  <label>Email</label>
-  <input type="email" name="email" value="<%= user.email %>" required>
+    <label>Email</label>
+    <input type="email" name="email" value="<%= user.email %>" required>
 
-  <label>Usuario</label>
-  <input type="text" name="usuario" value="<%= user.usuario %>" required>
+    <label>Usuario</label>
+    <input type="text" name="usuario" value="<%= user.usuario %>" required>
 
-  <label>Contraseña</label>
-  <input type="password" name="contrasena" value="<%= user.contrasena %>" required>
+    <label>Contraseña</label>
+    <input type="password" name="contrasena" value="<%= user.contrasena %>" required>
 
-  <label>Foto de perfil (URL)</label>
-  <input type="text" name="foto_de_perfil" value="<%= user.foto_de_perfil %>">
+    <label>Foto de perfil (URL)</label>
+    <input type="text" name="foto_de_perfil" value="<%= user.foto_de_perfil %>">
 
-  <button type="submit">Registrarse</button>
+    <button type="submit">Registrarse</button>
 </form>
 
 </body>

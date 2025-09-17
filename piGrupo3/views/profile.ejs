@@ -13,49 +13,56 @@
 </head>
 <body>
 	
-	<%- include('partials/header2.ejs') %>
-
-	<img src= <%= user.fotoDePerfil %> alt="Foto del Auto">
-	<h1>
-		<%= user.nombre %>
-	</h1>
-	<h2>
-		<%= user.email %>
-	</h2>
-	<h3>Productos</h3>
-	<ul>
+	<%- include('partials/header.ejs') %>
+<!-- Datos del usuario -->
+	<section class="info-usuario container products-wrapper">
+		<div class="row">
+			<div class="img-container offset-3 col-2">
+				<img src="<%= user.fotoDePerfil %>" alt="foto de perfil" class="foto-perfil">
+			</div>
+			<div class="data-container col-6">
+				<div class="d-flex align-items-center ">
+					<h1 class="main-title"><%= user.nombre %></h1>
+					<a class="btn mt-3 ml-4" href="">SEGUIR</a>
+				</div>
+				<div>
+					<ul class="">
+						<li><%= user.email %></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+<!-- /Datos del usuario -->
+<!-- Mis productos -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Mis productos</h2>
+			</div>
+			<!-- Show mis productos -->
 		<% for (let i = 0; i < listProducts.length; i++) { %>
-			<li>
-				<img src='<%= listProducts[i].imagen %>' alt="" width="100">
-			</li>
-			<li>
-				<%= listProducts[i].nombre %>
-			</li>
-			<li>
-				<%= listProducts[i].descripcion %>
-			</li>
-			<li>
-				Cant. comentarios:
-					<% if (coments[i]) { %>
-						<%= coments[i].length %>
-					<% } else { %>
-						0
-					<% } %>
-			</li>
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="product.html">
+						<figure class="product-box_image">
+							<img src="<%= listProducts[i].imagen %>" alt="">
+						</figure>
+						<article class="product-box_data">
+							<h2><%= listProducts[i].nombre %></h2>
+							<p><%= listProducts[i].descripcion %></p>
+							<p>Cant. comentarios:
+								<% if (coments[i]) { %>
+									<%= coments[i].length %>
+								<% } else { %>
+									0
+								<% } %>
+							</p>
+						</article>
+					</a>
+				</section>
+			</div>
 		<% } %>
-	</ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- /Mis productos -->
 </body>
 </html>

@@ -32,10 +32,10 @@ const userController = {
         })
         },
 
-  
+
     register: function (req, res) {
         const nuevoUsuario = {
-         email: '',
+        email: '',
         usuario: '',
         contrasena: '',
         foto_de_perfil: ''
