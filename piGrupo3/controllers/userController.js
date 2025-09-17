@@ -40,7 +40,7 @@ const userController = {
         contrasena: '',
         foto_de_perfil: ''
         };
-    return res.render('register', { user: nuevoUsuario });
+        return res.render('register', { user: nuevoUsuario });
     },
 
     login: function(req, res){
