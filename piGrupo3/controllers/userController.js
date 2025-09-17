@@ -50,7 +50,9 @@ const userController = {
             
         };
         return res.render('login', {user:loginUsuario});
-    }
+    },
+
+
     
 }
 
