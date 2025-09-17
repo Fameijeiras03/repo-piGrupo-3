@@ -5,6 +5,6 @@ const uC = require('../controllers/userController')
 
 router.get('/profile', uC.profile);
 router.get('/register', uC.register);
-router.get('/loginUsuario', uC.login);
+router.get('/login', uC.login);
 
 module.exports = router;
