@@ -13,32 +13,34 @@
 </head>     
 <body>
     <%- include('partials/header.ejs') %>
-    <!-- Novedades -->
-	<div class="container products-wrapper">
+        <div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
 				<h2 class="products-title">Registrate</h2>
 			</div>
-			<!-- Show the "ultimos" products -->
-			<h2 class="col-12"> \
-                <form action="/users/register" method="POST">
-                    <label>Email</label>
-                    <input type="email" name="email" value="<%= user.email %>" required>
+			
+			<h2 class="col-12"> 
+                <form id="registerForm">
+                    <div style="margin-bottom:12px;">
+                        <label for="email">Email</label><br>
+                        <input type="email" id="email" name="email" placeholder="tu@correo.com" required style="width:100%;">
+                    </div>
 
-                    <label>Usuario</label>
-                    <input type="text" name="usuario" value="<%= user.usuario %>" required>
+                    <div style="margin-bottom:12px;">
+                        <label for="usuario">Usuario</label><br>
+                        <input type="text" id="usuario" name="usuario" placeholder="tu usuario" required style="width:100%;">
+                    </div>
 
-                    <label>Contraseña</label>
-                    <input type="password" name="contrasena" value="<%= user.contrasena %>" required>
+                    <div style="margin-bottom:16px;">
+                        <label for="contrasena">Contraseña</label><br>
+                        <input type="password" id="contrasena" name="contrasena" placeholder="••••••••" required style="width:100%;">
+                    </div>
 
-                    <label>Foto de perfil (URL)</label>
-                    <input type="text" name="foto_de_perfil" value="<%= user.foto_de_perfil %>">
-
-                    <button type="submit">Registrarse</button>
+                
+                    <button type="button">Registrarse</button>
                 </form>
 			</h2>
-
-<%- include('partials/footer.ejs') %>
+    
 </body>
-
+<%- include('partials/footer.ejs') %>
 </html>
