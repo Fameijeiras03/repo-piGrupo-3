@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+</head>
+<body>
+  <%- include('partials/header.ejs') %>
+
+  <h1>Login</h1>
+  <form action="/users/login" method="POST">
+    
+    <label>Email</label>
+    <input type="email" name="email" value="<%= user.email %>" required>
+
+    <label>Contraseña</label>
+    <input type="password" name="contrasena" value="<%= user.contrasena %>" required>
+
+    <label>
+      <input type="checkbox" name="recordarme" <%= user.recordarme ? 'checked' : '' %> >
+      Recordarme
+    </label>
+
+    <button type="submit">Ingresar</button>
+  </form>
+</body>
+<%- include('partials/footer.ejs') %>
+</html>
