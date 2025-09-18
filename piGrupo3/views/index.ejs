@@ -13,29 +13,37 @@
 </head>
 <body>
 	<%- include('partials/header.ejs') %>
-
-	<h1>Productos</h1>
-	<ul>
+		<!-- Novedades -->
+	<div class="container products-wrapper">
+		<div class="row">
+			<div class="col-12">
+				<h2 class="products-title">Productos</h2>
+			</div>
+			<!-- Show the "ultimos" products -->
+			
 		<% for (let i = 0; i < productsList.length; i++) { %>
-			<li>
-				<img src='<%= productsList[i].imagen %>' alt="" width="100">
-			</li>
-			<li>
-				<%= productsList[i].nombre %>
-			</li>
-			<li>
-				<%= productsList[i].descripcion %>
-			</li>
-			<li>
-				Cant. comentarios:
-					<% if (coments[i]) { %>
-						<%= coments[i].length %>
-					<% } else { %>
-						0
-					<% } %>
-			</li>
+			<div class="col-12 col-sm-6 col-lg-3">
+				<section class="product-box">
+					<a href="product.html">
+						<figure class="product-box_image">
+							<img src='<%= productsList[i].imagen %>' alt="" width="100">
+						</figure>
+						<article class="product-box_data">
+							<h2><%= productsList[i].nombre %></h2>
+							<p><%= productsList[i].descripcion %></p>
+							<p>Cant. comentarios:
+								<% if (coments[i]) { %>
+									<%= coments[i].length %>
+								<% } else { %>
+									0
+								<% } %>
+							</p>
+						</article>
+					</a>
+				</section>
+			</div>
 		<% } %>
-	</ul>
+	
 </body>
 <%- include('partials/footer.ejs') %>
 </html>
