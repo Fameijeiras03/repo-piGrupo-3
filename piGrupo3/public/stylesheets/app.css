@@ -6,7 +6,7 @@
 :root {
   --yellow: #EAC926;
   --dark-blue: #03264C;
-  --light-blue: #1259c3;
+  --light-blue: #980000;
   --gray: #666666;
   --light-gray: #ebebeb;
   --green: #39b54a;
@@ -68,7 +68,7 @@ hr {
 /*====== Main Header ======*/
 .main-header {
   padding: 15px 0;
-  background-color: var(--yellow);
+  background-color: black
 }
 
 .main-header_home-link,
@@ -140,7 +140,7 @@ hr {
 }
 
 .logout:hover{
-  color: #1259c3;
+  color:#980000;
 }
 
 .left-navbar a,
@@ -154,11 +154,10 @@ hr {
 
 /*====== Banner ======*/
 .banner {
-  background-image: url(/images/img-home-banner.jpg);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100px;
+  height: 100%;
 }
 
 
@@ -527,4 +526,9 @@ textarea.form-input {
     width: 95%;
     margin: auto;
   }
+}
+
+
+.nav-elements{
+  color: white
 }
