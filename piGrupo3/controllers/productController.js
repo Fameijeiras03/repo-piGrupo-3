@@ -19,10 +19,27 @@ const productController = {
     },
     productAdd: function(req,res){
         return res.render('productAdd');
+    },
+
+    productDetail: function(req,res){
+        let id = Number(req.params.id)
+        let product = null
+
+        for (let i = 0; i < lenProducts; i++) {
+            if (Number(products[i].id) === id) {
+                product = products[i]
+            }
+        }
+
+        if (product == null) {
+            return res.status(404).render('error', { message: 'Producto no encontrado' })
+        }
+
+        return res.render('productDetail', { product: product })
     }
 
 
 
 }
 
-module.exports = productController
+module.exports = productController;

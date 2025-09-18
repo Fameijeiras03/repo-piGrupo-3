@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title><%= product.nombre %></title>
+  <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="/stylesheets/app.css">
+</head>
+<body>
+  <%- include('partials/header.ejs') %>
+
+  <main class="container">
+    <a href="/" class="btn-volver">← Volver</a>
+
+    <div class="product-detail">
+      <img src="<%= product.imagen %>" alt="<%= product.nombre %>" style="max-width:100%;">
+      <h1><%= product.nombre %></h1>
+      <p><%= product.descripcion %></p>
+
+      <% if (product.comentarios && product.comentarios.length) { %>
+        <h2>Comentarios (<%= product.comentarios.length %>)</h2>
+        <ul>
+          <% for (var i = 0; i < product.comentarios.length; i++) { %>
+            <li>
+              <strong><%= product.comentarios[i].nombreUsuario %>:</strong>
+              <%= product.comentarios[i].texto %>
+            </li>
+          <% } %>
+        </ul>
+      <% } %>
+    </div>
+  </main>
+
+  <%- include('partials/footer.ejs') %>
+</body>
+</html>
