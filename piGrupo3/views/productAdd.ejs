@@ -15,25 +15,29 @@
     <%- include('partials/header.ejs') %>
 
     <h1>Agregar producto</h1>
+    <div class="caja-form-pAdd">
+        <form action="" method="POST" id="registerForm">
+            <div style="margin-bottom:12px;">
+            <label for="imagen">Imagen (URL):</label>
+            <input type="text" id="imagen" name="imagen" placeholder="Pegá la URL de la imagen" equired style="width:100%;">
+            </div>
 
-    <form action="" method="POST">
-        <div>
-        <label for="imagen">Imagen (URL):</label>
-        <input type="text" id="imagen" name="imagen" placeholder="Pegá la URL de la imagen">
-        </div>
+            <div style="margin-bottom:16px;">
+            <label for="nombre">Nombre del producto:</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Escribí el nombre" equired style="width:100%;">
+            </div>
 
-        <div>
-        <label for="nombre">Nombre del producto:</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Escribí el nombre">
-        </div>
+            <div style="margin-bottom:16px;">
+            <label for="descripcion">Descripción:</label><br>
+            <textarea id="descripcion" name="descripcion" style="width:300px; height:100px;" placeholder="Escribí una breve descripción" required style="width:100%;"></textarea>
+            </div>
 
-        <div>
-        <label for="descripcion">Descripción:</label><br>
-        <textarea id="descripcion" name="descripcion" style="width:300px; height:100px;" placeholder="Escribí una breve descripción"></textarea>
-        </div>
-
-        <button type="button">Guardar</button>
-    </form>
+            <button type="button">Guardar</button>
+        </form>
+    </div>
+        
+    
+        
 <%- include('partials/footer.ejs') %>
 
 </body>
