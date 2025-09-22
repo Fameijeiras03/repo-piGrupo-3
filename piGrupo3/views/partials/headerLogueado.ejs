@@ -31,16 +31,20 @@
 		<nav class="main-navbar">
 			<ul class="left-navbar">
 				<li><a href="/" class='nav-elements'>Todos los productos</a></li>
+				<li><a href="/product-add" class='nav-elements'>Cargar producto</a></li>
 			</ul>
 			<ul class="right-navbar">
-			
 				<li>
-					<a href="/users/register" class='nav-elements'>Creá tu cuenta <i class="far fa-address-card"></i>
-					</a>
+					<a href="/users/profile" class='nav-elements'> <%= usuario.nombre %><i class="fas fa-user"></i></a>
 				</li>
 				<li>
-					<a href="/users/login" class='nav-elements'>Ingresá <i class="fas fa-sign-in-alt"></i></a>
+					<form action="/users/login" method="get">
+						<button class="logout nav-elements" type="submit">
+							Cerrar sesión <i class="fas fa-sign-in-alt"></i>
+						</button>
+					</form>
 				</li>
+				
 			</ul>
 		</nav>
 	</div>

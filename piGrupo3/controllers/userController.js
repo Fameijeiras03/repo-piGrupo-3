@@ -41,7 +41,9 @@ const userController = {
     login: function(req, res){
         return res.render('login');
     },
-
+    logout: function(req,res){
+        return res.render('logout')
+    }
 }
     
 

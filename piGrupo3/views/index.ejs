@@ -12,7 +12,13 @@
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 <body>
-	<%- include('partials/header.ejs') %>
+
+	<% if (logueado) { %>
+		<%- include('partials/headerLogueado.ejs') %>
+	<% } else { %>
+	  <%- include('partials/header.ejs') %>
+	<% } %>
+	
 	<section class="banner-container">
     <img src="/images/cardealership banner banner.svg" alt="Luxury Imports Banner" class="banner-image">
 	</section>

@@ -1,6 +1,7 @@
 const lD = require('../localData/index')
 let products = lD.productos
 let lenProducts = products.length
+let usuario = lD.usuario
 
 const productController = {
     listProducts: function(req,res){
@@ -15,7 +16,8 @@ const productController = {
             }
             
         }
-        return res.render('index',{productsList: productsList,  coments: coments})
+
+        return res.render('index',{productsList: productsList,  coments: coments, usuario: usuario, logueado: true})
     },
     productAdd: function(req,res){
         return res.render('productAdd');
@@ -36,9 +38,10 @@ const productController = {
         }
 
         return res.render('productDetail', { product: product })
-    }
-
-
+    },
+    searchResults: function(req,res) {
+        return res.render('searchResults',{products:products, usuario:usuario})
+    },
 
 }
 
