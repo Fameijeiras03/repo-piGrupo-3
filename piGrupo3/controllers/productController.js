@@ -1,23 +1,19 @@
-const lD = require('../localData/index')
-let products = lD.productos
-let lenProducts = products.length
-let usuario = lD.usuario
+const db = require('../database/models')
+//let products = db.productos
+//let lenProducts = products.length
+//let usuario = db.usuario
+
+
 
 const productController = {
     listProducts: function(req,res){
-        let productsList = products
-        let coments = []
-        let cantComents = 0
-        for (let i = 0; i < lenProducts; i++) {
-            let c = products[i].comentarios
-            coments.push(c)
-            if (c) {
-            cantComents = cantComents + c.length
-            }
-            
-        }
-
-        return res.render('index',{productsList: productsList,  coments: coments, usuario: usuario, logueado: true})
+        db.Producto.findAll()
+            .then(function(productos){
+                return res.send(productos)
+            })
+            .catch(function(error){
+                return res.send(error);
+            })
     },
     productAdd: function(req,res){
         return res.render('productAdd');
