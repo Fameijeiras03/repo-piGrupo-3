@@ -6,3 +6,4 @@ node_modules
 
 # Ignorar la carpeta de configuración de Sequelize
 /database/config/config.js
+
