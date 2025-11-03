@@ -5,7 +5,7 @@ CREATE TABLE usuarios (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   email VARCHAR(100) NOT NULL,
   contrasena VARCHAR(100) NOT NULL,
-  foto_de_perfil VARCHAR(500) NOT NULL,
+  fotoPerfil VARCHAR(500) NOT NULL,
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deletedAt DATETIME DEFAULT NULL
@@ -20,24 +20,24 @@ CREATE TABLE productos (
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deletedAt DATETIME DEFAULT NULL,
 
-  id_usuario INT UNSIGNED NOT NULL,
-  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+  idUsuario INT UNSIGNED NOT NULL,
+  FOREIGN KEY (idUsuario) REFERENCES usuarios(id)
 );
 
 CREATE TABLE comentarios (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  id_post INT UNSIGNED NOT NULL,
-  id_usuario INT UNSIGNED NOT NULL,
+  idPost INT UNSIGNED NOT NULL,
+  idUsuario INT UNSIGNED NOT NULL,
   comentario TEXT NOT NULL,
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deletedAt DATETIME DEFAULT NULL,
 
-  FOREIGN KEY (id_post) REFERENCES productos(id),
-  FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+  FOREIGN KEY (idPost) REFERENCES productos(id),
+  FOREIGN KEY (idUsuario) REFERENCES usuarios(id)
 );
 
-INSERT INTO usuarios (email, contrasena, foto_de_perfil)
+INSERT INTO usuarios (email, contrasena, fotoPerfil)
 VALUES
 ('rafaelmuller@gmail.com','riverplate','rafa.jpg'),
 ('pancho@gmail.com','hinchadelciclon','fotopancho.jpg'),
@@ -45,7 +45,7 @@ VALUES
 ('felix@gmail.com','clave1234','fotofelix.jpg'),
 ('lautipro@gmail.com','hinchaderecing','fotoracing.jpg');
 
-INSERT INTO productos (imagen, producto, descripcion, id_usuario)
+INSERT INTO productos (imagen, producto, descripcion, idUsuario)
 VALUES 
 ('https://www.exoticcarhacks.com/wp-content/uploads/2025/01/Used-2024-Ferrari-Roma-w-FULL-Stealth-PPF-Custom-Specs-Carbon-Driver-Zone-1731015795.jpg','Ferrari Roma','La piu veloce de tuta Italia',1),
 ('https://cdn.ferrari.com/cms/network/media/img/resize/6319eb192f9a532677cbe3c4-ferrari-purosangue-social-card-intro-share?width=1080','Ferrari Puro Sangue','La piu veloce de tuta Italia',1),
@@ -59,7 +59,7 @@ VALUES
 ('https://hips.hearstapps.com/hmg-prod/images/2024-ferrari-812-gts-101-64caae4038b21.jpeg?crop=0.547xw:0.548xh;0.127xw,0.342xh&resize=1200:*','Ferrari 812 Superfast','Un V12 atmosférico que ruge como ninguno',5);
 
 
-INSERT INTO comentarios (id_post, id_usuario, comentario) VALUES
+INSERT INTO comentarios (idPost, idUsuario, comentario) VALUES
 (1,1,'Increíble diseño, el Ferrari Roma es único.'),
 (1,2,'Lo vi en persona y me enamoré.'),
 (1,3,'Definitivamente mi Ferrari favorito.'),
