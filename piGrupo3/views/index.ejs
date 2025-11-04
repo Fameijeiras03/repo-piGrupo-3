@@ -13,11 +13,6 @@
 </head>
 <body>
 
-	<% if (logueado) { %>
-		<%- include('partials/headerLogueado.ejs') %>
-	<% } else { %>
-	<%- include('partials/header.ejs') %>
-	<% } %>
 	
 	<section class="banner-container">
     <img src="/images/cardealership banner banner.svg" alt="Luxury Imports Banner" class="banner-image">
@@ -30,23 +25,17 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			
-		<% for (let i = 0; i < productsList.length; i++) { %>
+		<% for (let i = 0; i < productos.length; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="/product/<%= productsList[i].id %>">
+					<a href="/product/<%= productos[i].id %>">
 						<figure class="product-box_image">
-							<img src='<%= productsList[i].imagen %>' alt="" width="100">
+							<img src='<%= productos[i].imagen %>' alt="" width="100">
 						</figure>
 						<article class="product-box_data">
-							<h2><%= productsList[i].nombre %></h2>
-							<p><%= productsList[i].descripcion %></p>
-							<p>Cant. comentarios:
-								<% if (coments[i]) { %>
-									<%= coments[i].length %>
-								<% } else { %>
-									0
-								<% } %>
-							</p>
+							<h2><%= productos[i].producto %></h2>
+							<p><%= productos[i].descripcion %></p>
+							<!--Faltaria comentarios-->
 						</article>
 					</a>
 				</section>
