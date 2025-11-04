@@ -2,32 +2,21 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title><%= product.nombre %></title>
+  <title><%= productos.nombre %></title>
   <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
   <link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 <body>
-  <%- include('partials/header.ejs') %>
-
+  
   <main class="container">
     <a href="/" class="btn-volver">← Volver</a>
 
-    <div class="product-detail">
-      <img src="<%= product.imagen %>" alt="<%= product.nombre %>" style="max-width:100%;">
-      <h1><%= product.nombre %></h1>
-      <p><%= product.descripcion %></p>
+    <div class="productos-detail">
+      <img src="<%= productos.imagen %>" alt="<%= productos.nombre %>" style="max-width:100%;">
+      <h1><%= productos.nombre %></h1>
+      <p><%= productos.descripcion %></p>
 
-      <% if (product.comentarios && product.comentarios.length) { %>
-        <h2>Comentarios (<%= product.comentarios.length %>)</h2>
-        <ul>
-          <% for (var i = 0; i < product.comentarios.length; i++) { %>
-            <li>
-              <strong><%= product.comentarios[i].nombreUsuario %>:</strong>
-              <%= product.comentarios[i].texto %>
-            </li>
-          <% } %>
-        </ul>
-      <% } %>
+      <!--Faltaria comentarios, hay que hacer relacion con el modelo de producto y comentarios xd :) <3 -->
     </div>
   </main>
 

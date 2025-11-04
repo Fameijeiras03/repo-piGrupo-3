@@ -26,14 +26,14 @@ CREATE TABLE productos (
 
 CREATE TABLE comentarios (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  idPost INT UNSIGNED NOT NULL,
+  idProducto INT UNSIGNED NOT NULL,
   idUsuario INT UNSIGNED NOT NULL,
   comentario TEXT NOT NULL,
   createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
   updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   deletedAt DATETIME DEFAULT NULL,
 
-  FOREIGN KEY (idPost) REFERENCES productos(id),
+  FOREIGN KEY (idProducto) REFERENCES productos(id),
   FOREIGN KEY (idUsuario) REFERENCES usuarios(id)
 );
 
@@ -59,7 +59,7 @@ VALUES
 ('https://hips.hearstapps.com/hmg-prod/images/2024-ferrari-812-gts-101-64caae4038b21.jpeg?crop=0.547xw:0.548xh;0.127xw,0.342xh&resize=1200:*','Ferrari 812 Superfast','Un V12 atmosférico que ruge como ninguno',5);
 
 
-INSERT INTO comentarios (idPost, idUsuario, comentario) VALUES
+INSERT INTO comentarios (idProducto, idUsuario, comentario) VALUES
 (1,1,'Increíble diseño, el Ferrari Roma es único.'),
 (1,2,'Lo vi en persona y me enamoré.'),
 (1,3,'Definitivamente mi Ferrari favorito.'),
