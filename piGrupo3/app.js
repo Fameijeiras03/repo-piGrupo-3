@@ -32,7 +32,7 @@ app.use(function(req, res, next){
   return next();
 });
 //middleware para tener la cookie disponible en las vistas
-// middleware de Cookies hacia Vistas
+
 app.use(function(req, res, next) {
 
   console.log(req.cookies.user);

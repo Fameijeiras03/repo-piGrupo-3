@@ -10,24 +10,53 @@ const userController = {
         return res.render('register');
     },
 
-    create: function(req, res) { //procesa el form de registro
-        // Encripta la contraseña antes de guardar
-        let contrasenaEncriptada = bcrypt.hashSync(req.body.contrasena, 10);
-
+    create: function(req, res) {
+    // valido el campo del mail este
+    if (!req.body.email || req.body.email == '') {
+        return res.send('El email es obligatorio');
+    }
+    
+    if (!req.body.contrasena || req.body.contrasena == '') {
+        return res.send('La contraseña es obligatoria');
+    }
+    
+    // valido longitud de la clave
+    if (req.body.contrasena.length < 3) {
+        return res.send('La contraseña debe tener al menos 3 caracteres');
+    }
+    
+    // verifico mail
+    db.User.findOne({
+        where: {
+            email: req.body.email
+        }
+    })
+    .then(function(usuarioEncontrado){
+        if (usuarioEncontrado) {
+            // e el mail :)
+            return res.send('El email ya está registrado. Por favor usá otro email.');
+        }
+        
+        // hasheo la clave y creo al usuario
+        let contrasenaHasheada = bcrypt.hashSync(req.body.contrasena, 10);
+        
         db.User.create({
-            nombreUsuario: req.body.nombreUsuario,
             email: req.body.email,
-            contrasena: contrasenaEncriptada,
+            nombreUsuario: req.body.usuario,
+            contrasena: contrasenaHasheada,
+            fotoPerfil: '/images/users/profile-default.png'
         })
-        .then(function() {
-            // Si se crea correctamente, redirige al home
-            return res.redirect('/');
+        .then(function(usuario){
+            return res.redirect('/users/login');
         })
-        .catch(function(error) {
-            console.log(error);
-            return res.send('Hubo un error al registrar el usuario');
-        });
-    },
+        .catch(function(error){
+            return res.send(error);
+        })
+    })
+    .catch(function(error){
+        return res.send(error);
+    })
+},
 
     showLogin: function(req, res){ 
         //muestro el form de login
@@ -67,9 +96,15 @@ const userController = {
        // return res.render('login');
     },
     logout: function(req,res){
-        return res.render('logout')
+        req.session.destroy();
+        res.clearCookie('user');
+        return res.redirect("/");
+    },
+    profile: function(req,res){
+        return res.render('profile');
     }
 }
 
 
 module.exports = userController
+

@@ -8,6 +8,7 @@ router.post('/register', uC.create);
 router.get('/login', uC.showLogin);
 router.post('/login', uC.login);
 router.get('/logout', uC.logout)
+router.get('/profile', uC.profile)
 
 
 module.exports = router;

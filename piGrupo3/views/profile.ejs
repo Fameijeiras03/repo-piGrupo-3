@@ -13,12 +13,17 @@
 </head>
 <body>
 	
-	<%- include('partials/header.ejs') %>
-<!-- Datos del usuario -->
-	<section class="info-usuario container products-wrapper">
+	<% if (locals.user != undefined) { %>
+		<%- include('partials/headerLogueado.ejs') %>
+	<% } else { %>
+		<%- include('partials/header.ejs') %>
+	<% } %>
+	<% if (locals.user != undefined) { %>
+		
+		<section class="info-usuario container products-wrapper">
 		<div class="row">
 			<div class="img-container offset-3 col-2">
-				<img src="<%= user.fotoDePerfil %>" alt="foto de perfil" class="foto-perfil">
+				<img src="/images/users/profile-default.png" alt="foto de perfil" class="foto-perfil">
 			</div>
 			<div class="data-container col-6">
 				<div class="d-flex align-items-center ">
@@ -40,30 +45,9 @@
 			<div class="col-12">
 				<h2 class="products-title">Mis productos</h2>
 			</div>
-			<!-- Show mis productos -->
-		<% for (let i = 0; i < listProducts.length; i++) { %>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="/product/<%= listProducts[i].id %>">
-						<figure class="product-box_image">
-							<img src="<%= listProducts[i].imagen %>" alt="">
-						</figure>
-						<article class="product-box_data">
-							<h2><%= listProducts[i].nombre %></h2>
-							<p><%= listProducts[i].descripcion %></p>
-							<p>Cant. comentarios:
-								<% if (coments[i]) { %>
-									<%= coments[i].length %>
-								<% } else { %>
-									0
-								<% } %>
-							</p>
-						</article>
-					</a>
-				</section>
-			</div>
-		<% } %>
-<!-- /Mis productos -->
+
+	<% } %>
+<!-- Datos del usuario -->
 <%- include('partials/footer.ejs') %>
 
 </body>
