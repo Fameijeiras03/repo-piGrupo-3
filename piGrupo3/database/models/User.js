@@ -10,9 +10,6 @@ module.exports = function(sequelize, DataTypes) {
         email: {
             type: DataTypes.STRING
         },
-        nombreUsuario: {
-            type: DataTypes.STRING
-        },
         contrasena: {
             type: DataTypes.STRING
         },
@@ -35,6 +32,13 @@ module.exports = function(sequelize, DataTypes) {
         underscored: false,
     };
     const User = sequelize.define(alias, cols, config);
+
+    User.associate = function(models){
+        User.hasMany(models.Producto,{
+            as: "products",
+            foreignKey: "idUsuario"
+        })
+    }
 
     return User;
     
