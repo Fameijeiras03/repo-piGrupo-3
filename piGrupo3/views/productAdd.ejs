@@ -12,7 +12,11 @@
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
     <body>
-    <%- include('partials/header.ejs') %>
+    <% if (locals.user != undefined) { %>
+		<%- include('partials/headerLogueado.ejs') %>
+	<% } else { %>
+		<%- include('partials/header.ejs') %>
+	<% } %>
 
     <h1>Agregar producto</h1>
     <div class="caja-form-pAdd">
