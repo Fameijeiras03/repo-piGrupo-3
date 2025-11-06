@@ -4,7 +4,10 @@ var router = express.Router();
 const uC = require('../controllers/userController')
 
 router.get('/register', uC.register);
-router.get('/login', uC.login);
+router.post('/register', uC.create);
+router.get('/login', uC.showLogin);
+router.post('/login', uC.login);
 router.get('/logout', uC.logout)
+
 
 module.exports = router;

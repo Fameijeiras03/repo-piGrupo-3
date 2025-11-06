@@ -20,24 +20,24 @@
 			</div>
 			
 			<h2 class="col-12"> 
-                <form id="registerForm">
+                <form id="registerForm" action="/users/register" method="POST">
                     <div style="margin-bottom:12px;">
                         <label for="email">Email</label><br>
-                        <input type="email" id="email" name="email" placeholder="tu@correo.com" required style="width:100%;">
+                        <input type="email" id="email" name="email" placeholder="ejemplo@mail.com" required style="width:100%;">
                     </div>
 
                     <div style="margin-bottom:12px;">
-                        <label for="usuario">Usuario</label><br>
-                        <input type="text" id="usuario" name="usuario" placeholder="tu usuario" required style="width:100%;">
+                        <label for="usuario">Nombre de Usuario</label><br>
+                        <input type="text" id="usuario" name="nombreUsuario" placeholder="Nombre de Usuario" required style="width:100%;">
                     </div>
 
                     <div style="margin-bottom:16px;">
                         <label for="contrasena">Contraseña</label><br>
-                        <input type="password" id="contrasena" name="contrasena" placeholder="••••••••" required style="width:100%;">
+                        <input type="password" id="contrasena" name="contrasena" placeholder="ejemplo123" required style="width:100%;">
                     </div>
 
                 
-                    <button type="button">Registrarse</button>
+                    <button type="submit">Registrarse</button>
                 </form>
 			</h2>
 <%- include('partials/footer.ejs') %>

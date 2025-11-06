@@ -19,7 +19,7 @@
 				<h2 class="products-title">Ingresar</h2>
 			</div>
 			<h2 class="col-12"> 
-                <form id="loginForm" autocomplete="off">
+                <form id="loginForm" autocomplete="off" action="/users/login" method="POST">
                     <div style="margin-bottom:12px;">
                         <label for="email">Email</label><br>
                         <input type="email" id="email" name="email" placeholder="tu@correo.com" required style="width:100%;">
@@ -30,12 +30,12 @@
                     </div>
                     <div style="margin:12px 0;">
                         <label style="display:flex; align-items:center; gap:8px; cursor:pointer;">
-                        <input type="checkbox" id="recordarme" name="recordarme" value="1">
+                        <input type="checkbox" id="recordarme" name="recordame" value="1">
                         Recordarme
                         </label>
                     </div>
                     
-                    <button type="button">Ingresar</button>
+                    <button type="submit">Ingresar</button>
                 </form>
 			</h2>
 <%- include('partials/footer.ejs') %>

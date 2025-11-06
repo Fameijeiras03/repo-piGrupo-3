@@ -99,3 +99,14 @@ INSERT INTO comentarios (idProducto, idUsuario, comentario) VALUES
 (10,1,'Tremenda la potencia de este auto'),
 (10,3,'Una obra de arte.'),
 (10,5,'Del rey de los Ferrari.');
+
+ALTER TABLE usuarios ADD COLUMN nombreUsuario VARCHAR(100);
+
+UPDATE usuarios SET nombreUsuario = 'rafaelmuller1234' WHERE email = 'rafaelmuller@gmail.com';
+UPDATE usuarios SET nombreUsuario = 'pancho1234' WHERE email = 'pancho@gmail.com';
+UPDATE usuarios SET nombreUsuario = 'rmuller1234' WHERE email = 'rmuller@udesa.edu.ar';
+UPDATE usuarios SET nombreUsuario = 'felix1234' WHERE email = 'felix@gmail.com';
+UPDATE usuarios SET nombreUsuario = 'lautipro1234' WHERE email = 'lautipro@gmail.com';
+
+ALTER TABLE usuarios ADD UNIQUE (nombreUsuario);
+ALTER TABLE usuarios MODIFY nombreUsuario VARCHAR(100) NOT NULL;

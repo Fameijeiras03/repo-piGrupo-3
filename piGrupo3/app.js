@@ -4,11 +4,49 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+//recupero la session
+const session = require('express-session');
+
+
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/product')
 
 
 var app = express();
+app.use(cookieParser());
+
+
+//middleware de configuracion de session
+app.use(session({
+  secret: 'Codigo Secreto',
+  resave: false,
+  saveUninitialized: true,
+}));
+
+//middleware para tener session disponible en las vistas
+app.use(function(req, res, next){
+  if(req.session.user != undefined){ //el user esta logueado
+    res.locals.user = req.session.user; //si estoy logueaddo que aca en esta linea ya estoy, envio la info en las vistas
+  }
+  return next();
+});
+//middleware para tener la cookie disponible en las vistas
+// middleware de Cookies hacia Vistas
+app.use(function(req, res, next) {
+
+  console.log(req.cookies.user);
+  
+  
+  if (req.cookies.user != undefined && req.session.user == undefined) {
+    res.locals.user = req.cookies.user;   // uno lo envia a las vistas (partials)
+    req.session.user = req.cookies.user;  // otro lo vuelve a poner en session
+  }
+
+  return next();
+})
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -17,7 +55,6 @@ app.set('view engine', 'ejs');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', usersRouter);

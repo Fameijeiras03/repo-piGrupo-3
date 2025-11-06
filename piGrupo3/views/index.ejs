@@ -12,18 +12,31 @@
 	<link rel="stylesheet" href="/stylesheets/app.css">
 </head>
 <body>
+	<% if (locals.user != undefined) { %>
+		<%- include('partials/headerLogueado.ejs') %>
+	<% } else { %>
+		<%- include('partials/header.ejs') %>
+	<% } %>
 
 	
 	<section class="banner-container">
     <img src="/images/cardealership banner banner.svg" alt="Luxury Imports Banner" class="banner-image">
 	</section>
-		<!-- Novedades -->
+		
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
+				<%if (locals.user == undefined) { %>
+					<h2>Bienvenido a Luxury Imports, logueate para mas</h2>
+				<% } else { %>
+					<h2>Bienvenido <%= user.email %>
+					</h2>
+				<% } %>
+			</div>
+			<div class="col-12">
 				<h2 class="products-title">Productos</h2>
 			</div>
-			<!-- Show the "ultimos" products -->
+			
 			
 		<% for (let i = 0; i < productos.length; i++) { %>
 			<div class="col-12 col-sm-6 col-lg-3">
@@ -35,7 +48,7 @@
 						<article class="product-box_data">
 							<h2><%= productos[i].producto %></h2>
 							<p><%= productos[i].descripcion %></p>
-							<!--Faltaria comentarios-->
+							
 						</article>
 					</a>
 				</section>
