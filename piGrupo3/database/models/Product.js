@@ -15,6 +15,9 @@ module.exports = function(sequelize, DataTypes) {
         descripcion: {
             type: DataTypes.STRING
         },
+        idUsuario:{
+            type: DataTypes.INTEGER
+        },
         createdAt: {
             type: DataTypes.DATE,
         },
@@ -24,13 +27,21 @@ module.exports = function(sequelize, DataTypes) {
         deletedAt: {
             type: DataTypes.DATE,
         },
+        
     };
     let config = {
         tableName: 'productos',
         timestamps: true,
         underscored: false,
     }
-    let Productos = sequelize.define(alias, cols, config);
+    let Producto = sequelize.define(alias, cols, config);
 
-    return Productos;
+    Producto.associate = function(models){
+        Producto.belongsTo(models.User,{
+            as: "user",
+            foreignKey: "idUsuario"
+        })
+    }
+
+    return Producto;
 }
