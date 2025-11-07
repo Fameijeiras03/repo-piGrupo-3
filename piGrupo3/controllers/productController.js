@@ -8,6 +8,36 @@ const op = db.Sequelize.Op;
 
 
 const productController = {
+
+    productAdd: function(req,res){
+        if(req.session.user == undefined){
+            return res.redirect('/users/login')
+        }
+        return res.render('productAdd');
+    },
+
+    productStore: function(req,res){
+        if(req.session.user == undefined){
+            return res.redirect('/users/login')
+        }
+        db.Producto.create({
+            producto: req.body.producto,
+            descripcion: req.body.descripcion,
+            imagen: req.body.imagen,
+            idUsuario: req.session.user.id
+        })
+        .then(function(){
+            return res.redirect('/')
+        })
+
+        .catch(function(error){
+            return res.send(error);
+        });
+    },
+
+
+
+
     listProducts: function(req,res){
         
         db.Producto.findAll({
@@ -20,10 +50,7 @@ const productController = {
                 return res.send(error);
             })
     },
-    productAdd: function(req,res){
-        return res.render('productAdd');
-    },
-
+    
     productDetail: function(req,res){
         let id = req.params.id;
         db.Producto.findByPk(id,
