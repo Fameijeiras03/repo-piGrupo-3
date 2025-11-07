@@ -3,6 +3,19 @@ const bcrypt = require('bcryptjs');
 const op = db.Sequelize.Op;
 
 const userController = {
+    viewProfile: function(req, res) {
+    let id = req.params.id;
+    
+    db.User.findByPk(id, {
+        include: [{association: "products"}]
+    })
+    .then(function(usuario){
+        return res.render('viewProfiles', {usuario: usuario});
+    })
+    .catch(function(error){
+        return res.send(error);
+    })
+    },
 
     register: function(req, res) {
         // Muestra el formulario de registro

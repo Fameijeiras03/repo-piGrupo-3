@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Perfil de <%= usuario.nombreUsuario %></title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/app.css">
+</head>
+<body>
+	
+	<% if (locals.user != undefined) { %>
+		<%- include('partials/headerLogueado.ejs') %>
+	<% } else { %>
+		<%- include('partials/header.ejs') %>
+	<% } %>
+	
+    <div class="container">
+        <h1>Perfil de <%= usuario.nombreUsuario %></h1>
+        <p>Email: <%= usuario.email %></p>
+        <img src="<%= usuario.fotoPerfil %>" alt="foto de perfil" style="width:100px;">
+        
+        <h2>Productos de <%= usuario.nombreUsuario %></h2>
+        <% if (usuario.products.length > 0) { %>
+            <% for (let i = 0; i < usuario.products.length; i++) { %>
+                <div>
+                    <h3><%= usuario.products[i].producto %></h3>
+                    <img src="<%= usuario.products[i].imagen %>" width="100">
+                </div>
+            <% } %>
+        <% } else { %>
+            <p>Este usuario no tiene productos cargados</p>
+        <% } %>
+    </div>
+
+	<%- include('partials/footer.ejs') %>
+
+</body>
+</html>

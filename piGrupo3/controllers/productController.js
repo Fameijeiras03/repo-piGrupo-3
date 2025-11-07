@@ -9,7 +9,10 @@ const op = db.Sequelize.Op;
 
 const productController = {
     listProducts: function(req,res){
-        db.Producto.findAll()
+        
+        db.Producto.findAll({
+            include: [{association: "user"}]
+        })
             .then(function(productos){
                 return res.render('index', {productos:productos})
             })

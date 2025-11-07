@@ -9,6 +9,7 @@ router.get('/login', uC.showLogin);
 router.post('/login', uC.login);
 router.get('/logout', uC.logout)
 router.get('/profile', uC.profile)
+router.get('/viewProfiles/:id?', uC.viewProfile)
 
 
 module.exports = router;

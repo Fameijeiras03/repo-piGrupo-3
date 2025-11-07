@@ -49,6 +49,9 @@
 							<h2><%= productos[i].producto %></h2>
 							<p><%= productos[i].descripcion %></p>
 							
+								
+							<a href="/users/viewProfiles/<%= productos[i].user.id %>"><%= productos[i].user.nombreUsuario %></a>
+							
 						</article>
 					</a>
 				</section>
