@@ -22,15 +22,21 @@ const productController = {
     },
 
     productDetail: function(req,res){
-        db.Producto.findByPk(req.params.id)
-            .then(function(productos){
-                return res.render('productDetail',{productos:productos})
+        let id = req.params.id;
+        db.Producto.findByPk(id,
+            {
+                include: [{association: 'user'}]
             })
-            .catch(function(error){
-                return res.send(error);
+        .then(function(products){
+            return res.render('productDetail', {
+                products: products,
+                user: req.session.user
             })
-        }
-    ,
+        })
+        .catch(function(error){
+            return res.send(error);
+        })
+    },
     searchResults: function(req,res) {
         
         let nombre = req.query.search;

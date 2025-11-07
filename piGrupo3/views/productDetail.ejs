@@ -1,23 +1,47 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title><%= productos.nombre %></title>
-  <link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="/stylesheets/app.css">
-</head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- Font Awesome Stylesheet -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+	<!-- Bootstrap Grid Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/bootstrap-grid.min.css">
+	<!-- Own Stylesheet -->
+	<link rel="stylesheet" href="/stylesheets/app.css">
+</head>   
 <body>
-  
+  <% if (locals.user != undefined) { %>
+		<%- include('partials/headerLogueado.ejs') %>
+	<% } else { %>
+		<%- include('partials/header.ejs') %>
+	<% } %>
+
   <main class="container">
     <a href="/" class="btn-volver">← Volver</a>
 
-    <div class="productos-detail">
-      <img src="<%= productos.imagen %>" alt="<%= productos.nombre %>" style="max-width:100%;">
-      <h1><%= productos.nombre %></h1>
-      <p><%= productos.descripcion %></p>
+    <div class="col-12 col-sm-6 col-lg-3">
+      <div class="productos-detail">
+            <section class="product-box">
+              <figure class="product-box_image">
+                <img src='<%= products.imagen %>' alt="" width="300">
+              </figure>
+              <article class="product-box_data">
+                  <h1><%= products.producto %></h1>
+                  <p><%= products.descripcion %></p>
+                  <p><%= products.user.nombreUsuario %></p>
+              </article>
+            
 
-      <!--Faltaria comentarios, hay que hacer relacion con el modelo de producto y comentarios xd :) <3 -->
+              <!--Faltaria comentarios, hay que hacer relacion con el modelo de producto y comentarios xd :) <3 -->
+            </section>
+      </div>
     </div>
+
+
+
+
   </main>
 
   <%- include('partials/footer.ejs') %>
