@@ -101,10 +101,30 @@ const userController = {
         return res.redirect("/");
     },
     profile: function(req,res){
-        return res.render('profile');
-    }
+
+        let emailUsuario = req.session.user.email;
+
+        db.User.findOne({
+            where: {email: emailUsuario},
+            include:[
+                {association: "products"}
+            ]
+        })
+
+        .then(function(usuario){
+            return res.render('profile',{
+                usuario: usuario,
+                productos: usuario.products,
+                cantidadProductos: usuario.products.length
+            });
+        })
+
+        .catch(function(error){
+            return res.send(error);
+        });
+
+}
 }
 
 
 module.exports = userController
-
