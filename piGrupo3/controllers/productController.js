@@ -20,6 +20,8 @@ const productController = {
         if(req.session.user == undefined){
             return res.redirect('/users/login')
         }
+
+    
         db.Producto.create({
             producto: req.body.producto,
             descripcion: req.body.descripcion,
@@ -34,7 +36,6 @@ const productController = {
             return res.send(error);
         });
     },
-    
     listProducts: function(req,res){
         
         db.Producto.findAll({
@@ -69,6 +70,24 @@ const productController = {
             return res.send(error);
         })
     },
+    crearComentario: function(req,res){
+        if(req.session.user == undefined){
+            return res.redirect('/users/login')
+            }
+        db.Comentario.create({
+        comentario: req.body.comentario,
+        idProducto: req.body.idProducto,
+        idUsuario: req.session.user.id
+    })
+    .then(function(){
+        return res.redirect('/product/' + req.body.idProducto)
+    })
+    .catch(function(error){
+        return res.send(error);
+    })
+
+    },
+
     searchResults: function(req,res) {
         
         let nombre = req.query.search;

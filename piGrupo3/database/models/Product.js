@@ -44,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
 
         // Un producto puede tener muchos comentarios
         Producto.hasMany(models.Comentario, {
-            as: "comments",
+            as: "comentarios",
             foreignKey: "idProducto"
         });
     };
