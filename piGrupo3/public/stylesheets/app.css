@@ -540,3 +540,24 @@ textarea.form-input {
     min-height: 50px;
     background-color: #f0f0f0;
 }
+
+.btn-volver{
+  background-color: transparent; 
+  color: #000000;                
+  font-size: 1.8em;               
+  font-weight: 700;               
+  padding: 8px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  border: 2px solid transparent; 
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.btn-volver:hover,
+.btn-volver:focus{
+  background-color: var(--light-blue);
+  color: #ffffff;
+  border-color: var(--light-blue);
+  outline: none;
+}

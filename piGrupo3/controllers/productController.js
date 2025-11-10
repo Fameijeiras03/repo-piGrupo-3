@@ -34,10 +34,7 @@ const productController = {
             return res.send(error);
         });
     },
-
-
-
-
+    
     listProducts: function(req,res){
         
         db.Producto.findAll({
@@ -54,8 +51,13 @@ const productController = {
     productDetail: function(req,res){
         let id = req.params.id;
         db.Producto.findByPk(id,
-            {
-                include: [{association: 'user'}]
+            {include: [
+                {association: 'user'},
+                {
+                    association: 'comentarios',
+                    include: [{association: 'user'}]
+                }
+            ]
             })
         .then(function(products){
             return res.render('productDetail', {
@@ -88,7 +90,7 @@ const productController = {
 
     
     },
-
+    
 }
 
 module.exports = productController;

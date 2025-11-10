@@ -81,7 +81,6 @@ const userController = {
             email: req.body.email,
             contrasena: req.body.contrasena,
             recordame: req.body.recordame,
-            nombreUsuario: req.body.nombreUsuario
         };
 
         //validacion del usuario
