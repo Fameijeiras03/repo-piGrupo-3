@@ -18,6 +18,9 @@ const userController = {
     },
 
     register: function(req, res) {
+        if(req.session.user != undefined){
+        return res.redirect('/');
+        }
         // Muestra el formulario de registro
         return res.render('register');
     },
@@ -75,6 +78,9 @@ const userController = {
 
     showLogin: function(req, res) { 
         //muestro el form de login
+        if(req.session.user != undefined){
+        return res.redirect('/');
+        }
         return res.render('login');
     },
 
