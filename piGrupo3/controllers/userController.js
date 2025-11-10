@@ -51,10 +51,13 @@ const userController = {
             
             // hasheo la clave y creo al usuario
             let contrasenaHasheada = bcrypt.hashSync(req.body.contrasena, 10);
+
+
+       
             
             db.User.create({
                 email: req.body.email,
-                nombreUsuario: req.body.usuario,
+                nombreUsuario: req.body.nombreUsuario,
                 contrasena: contrasenaHasheada,
                 fotoPerfil: '/images/users/profile-default.png'
             })
@@ -81,7 +84,6 @@ const userController = {
             email: req.body.email,
             contrasena: req.body.contrasena,
             recordame: req.body.recordame,
-            nombreUsuario: req.body.nombreUsuario
         };
 
         //validacion del usuario
@@ -93,11 +95,13 @@ const userController = {
                 //comparo clave del form con la de la bd (booleano)
                 let contrasenaOk = bcrypt.compareSync(infoUser.contrasena, user.contrasena);
                 if (contrasenaOk) {
-                    req.session.user = infoUser; //creo la session
+                    req.session.user = user; //creo la session
+                    console.log(req.session.user);
                 }
                 if (infoUser.recordame) {
                     res.cookie('user', infoUser, { maxAge: 600000 });
                 }
+                
                 return res.redirect('/');
             }
         })
@@ -137,4 +141,4 @@ const userController = {
 
 };
 
-module.exports = userController;
+module.exports = userController
